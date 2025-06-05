@@ -1,14 +1,12 @@
-// controllers/authController.js
 import jwt from 'jsonwebtoken';
 import db from "../db.js";
-import { jwtSecret } from '../server.js';  // importar a variável do secret
+import { jwtSecret } from '../server.js';  
 
 export const login = async (req, res) => {
   const { email, senha } = req.body;
 
   try {
-    // Verifica se é cliente
-    const [cliente] = await db.query("SELECT * FROM cliente WHERE Email = ? AND Senha = ?", [email, senha]);
+    const [cliente] = await db.query("SELECT * FROM clientes WHERE Email = ? AND Senha = ?", [email, senha]);
 
     if (cliente.length > 0) {
       const usuario = {
