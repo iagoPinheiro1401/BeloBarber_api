@@ -36,7 +36,7 @@ export const excluirAgendamento = async (id) => {
 
 export const buscarHorariosAgendados = async (data, idProfissional) => {
   const [rows] = await pool.query(
-    'SELECT Hora FROM Agendamento WHERE Data = ? AND ID_Profissional = ?',
+    'SELECT Hora FROM agendamento WHERE Data = ? AND ID_Profissional = ?',
     [data, idProfissional]
   );
   return rows;
