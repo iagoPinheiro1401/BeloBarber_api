@@ -46,11 +46,11 @@ export const buscarAgendamentosPorDataEProfissionalComCliente = async (data, idP
   const [rows] = await pool.query(
     `SELECT 
         a.Hora, 
-        c.Nome AS Cliente, 
+        c.Nome AS clientes, 
         s.Nome AS Servicos, 
         s.Preco
      FROM agendamento a
-     JOIN cliente c ON a.ID_Cliente = c.ID_Cliente
+     JOIN clientes c ON a.ID_Cliente = c.ID_Cliente
      JOIN servicos s ON a.ID_Servico = s.ID_Servico
      WHERE a.Data = ? AND a.ID_Profissional = ?
      ORDER BY a.Hora`,
